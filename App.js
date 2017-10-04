@@ -1,14 +1,25 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import reducer from './reducers';
+import { TabNavigator, StackNavigator } from 'react-navigation';
+import DeckSummary from './components/DeckSummary';
 
 export default class App extends React.Component {
+  componentDidMount() {
+
+  }
+
+  // store={createStore(reducer)}
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload. Test</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      </View>
+      <Provider>
+        <View style={styles.container}>
+          <Text>This is MobileFlashcards</Text>
+          <DeckSummary />
+        </View>
+      </Provider>
     );
   }
 }
