@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 
-export default function DeckSummary ({ deck }) {
+export default function AddQuestion ({ deck }) {
   return (
     <View style={styles.deck}>
-      <Text>Deck Summary</Text>
+      <Text>Add Question</Text>
     </View>
   )
 }

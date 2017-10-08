@@ -4,7 +4,14 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import reducer from './reducers';
 import { TabNavigator, StackNavigator } from 'react-navigation';
-import DeckSummary from './components/DeckSummary';
+import DeckList from './components/DeckList';
+import Header from './components/Header';
+
+const MainNavigator = StackNavigator({
+  Home: {
+    screen: DeckList,
+  },
+})
 
 export default class App extends React.Component {
   componentDidMount() {
@@ -16,8 +23,11 @@ export default class App extends React.Component {
     return (
       <Provider>
         <View style={styles.container}>
+          <Header>
+            MobileFlashcards
+          </Header>
           <Text>This is MobileFlashcards</Text>
-          <DeckSummary />
+          <MainNavigator />
         </View>
       </Provider>
     );
