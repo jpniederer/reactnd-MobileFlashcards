@@ -3,6 +3,16 @@ import { View, StyleSheet, Text } from 'react-native';
 import DeckSummary from './DeckSummary';
 
 export default class DeckList extends Component {
+  state = { 
+    decks: []
+  }
+
+  componentWillMount () {
+    // Get Decks
+
+    // Update decks in state
+  }
+
   static navigationOptions = ({ navigation }) => {
     return {
       title: 'Home'
