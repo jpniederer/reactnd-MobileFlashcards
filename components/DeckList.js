@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import DeckSummary from './DeckSummary';
+import { AppLoading } from 'expo';
 
 export default class DeckList extends Component {
   state = { 
-    decks: []
+    decks: [],
+    isReady: true,
   }
 
   componentWillMount () {
@@ -19,11 +21,16 @@ export default class DeckList extends Component {
     }
   }
   // Will Map over the decks and create a List of DeckSummary components.
-  render() { 
+  render() {
+    const { isReady } = this.state;
+
+    if (!isReady) {
+      return <AppLoading />
+    }
+
     return (
       <View style={styles.deck}>
         <Text>Deck List</Text>
-        <DeckSummary />
       </View>
     )
   }
