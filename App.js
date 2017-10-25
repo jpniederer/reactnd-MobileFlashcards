@@ -7,6 +7,7 @@ import { TabNavigator, StackNavigator } from 'react-navigation';
 import DeckList from './components/DeckList';
 import AddDeck from './components/AddDeck';
 import DeckSummary from './components/DeckSummary';
+import Deck from './components/Deck';
 import { Constants } from 'expo';
 import { purple, red, white } from './utils/colors';
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
@@ -59,8 +60,8 @@ const MainNavigator = StackNavigator({
   Home: {
     screen: Tabs,
   },
-  DeckSummary: {
-    screen: DeckSummary,
+  Deck: {
+    screen: Deck,
     navigationOptions: {
       headerTintColor: white,
       headerStyle: {
@@ -76,8 +77,12 @@ export default class App extends React.Component {
   }
 
   render() {
+    const store = createStore(
+      reducer,
+      window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    );
     return (
-      <Provider store={createStore(reducer)}>
+      <Provider store={store}>
         <View style={{flex: 1}}>
           <FlashStatusBar backgroundColor={red} barStyle='light-content' />
           <Text>This is MobileFlashcards</Text>

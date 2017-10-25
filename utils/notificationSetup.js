@@ -11,7 +11,7 @@ export function clearLocalNotification () {
 function createNotification () {
   return {
     title: 'Quiz Time!',
-    body: 'Remember to take a quiz today.',
+    body: 'Remember to take a quiz today. Also, have a great day.',
     ios: {
       sound: true,
     },
