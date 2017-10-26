@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
+import GenericButton from './GenericButton';
 import { connect } from 'react-redux';
+import { green, red, white } from '../utils/colors';
 
 class Deck extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -12,9 +14,25 @@ class Deck extends Component {
   }
 
   render() {
+    const { title, questions } = this.props.deck;
+    const { navigation } = this.props;
+
     return (
       <View style={styles.deck}>
-        <Text>Deck</Text>
+        <Text>{title}</Text>
+        <Text>{questions.length}</Text>
+        <GenericButton style={{color: green}} onPress={() => navigation.navigate(
+          'AddQuestion',
+          { title: 'Add a card to ' + title }
+        )}>
+          Add a Card
+        </GenericButton>
+        <GenericButton style={{color: red}} onPress={() => navigation.navigate(
+          'Quiz',
+          { title: 'Quiz on ' + title }
+        )}>
+          Start Quiz
+        </GenericButton>
       </View>
     )
   }
@@ -22,8 +40,8 @@ class Deck extends Component {
 
 const styles = StyleSheet.create({
   deck: {
-    flexDirection: 'row',
-    marginTop: 12
+    backgroundColor: white,
+    padding: 12
   }
 })
 

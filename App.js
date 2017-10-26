@@ -8,8 +8,10 @@ import DeckList from './components/DeckList';
 import AddDeck from './components/AddDeck';
 import DeckSummary from './components/DeckSummary';
 import Deck from './components/Deck';
+import AddQuestion from './components/AddQuestion';
+import Quiz from './components/Quiz';
 import { Constants } from 'expo';
-import { purple, red, white } from './utils/colors';
+import { purple, red, white, green, black } from './utils/colors';
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
 import { setLocalNotification } from './utils/notificationSetup';
 
@@ -41,10 +43,10 @@ const Tabs = TabNavigator({
     header: null
   },
   tabBarOptions: {
-    activeTintColor: Platform.OS === 'ios' ? purple : white,
+    activeTintColor: white,
     style: {
       height: 56,
-      backgroundColor: Platform.OS === 'ios' ? white : purple,
+      backgroundColor: Platform.OS === 'ios' ? red : green,
       shadowColor: 'rgba(0, 0, 0, 0.24)',
       shadowOffset: {
         width: 0,
@@ -65,7 +67,25 @@ const MainNavigator = StackNavigator({
     navigationOptions: {
       headerTintColor: white,
       headerStyle: {
-        backgroundColor: purple,
+        backgroundColor: Platform.OS === 'ios' ? red : green,
+      }
+    }
+  },
+  AddQuestion: {
+    screen: AddQuestion,
+    navigationOptions: {
+      headerTintColor: white,
+      headerStyle: {
+        backgroundColor: Platform.OS === 'ios' ? red : green,
+      }
+    }
+  },
+  Quiz: {
+    screen: Quiz,
+    navigationOptions: {
+      headerTintColor: white,
+      headerStyle: {
+        backgroundColor: Platform.OS === 'ios' ? red : green,
       }
     }
   },
@@ -84,8 +104,7 @@ export default class App extends React.Component {
     return (
       <Provider store={store}>
         <View style={{flex: 1}}>
-          <FlashStatusBar backgroundColor={red} barStyle='light-content' />
-          <Text>This is MobileFlashcards</Text>
+          <FlashStatusBar backgroundColor={black} barStyle='light-content' />
           <MainNavigator />
         </View>
       </Provider>

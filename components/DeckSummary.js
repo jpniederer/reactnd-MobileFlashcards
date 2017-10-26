@@ -15,8 +15,8 @@ export default function DeckSummary ({ deck, navigation }) {
           { title: deck.title }
         )}
         >
-          <Text>{deck.title}</Text>
-          <Text>{deck.questions.length} Cards in Deck</Text>
+          <Text style={styles.text}>{deck.title}</Text>
+          <Text style={styles.text}>Card Count: {deck.questions.length}</Text>
       </TouchableOpacity>
     </View>
   )
@@ -39,8 +39,12 @@ const styles = StyleSheet.create({
       height: 3
     },
   },
-  deck: {
+  text: {
     flexDirection: 'row',
-    marginTop: 12
+    alignItems: 'center',
+    justifyContent: 'center',
+    textAlign: 'center',
+    fontSize: 20,
+    fontWeight: 'bold',
   }
 })
