@@ -21,13 +21,13 @@ class Deck extends Component {
       <View style={styles.deck}>
         <Text>{title}</Text>
         <Text>{questions.length}</Text>
-        <GenericButton style={{color: green}} onPress={() => navigation.navigate(
+        <GenericButton onPress={() => navigation.navigate(
           'AddQuestion',
           { title: 'Add a card to ' + title }
         )}>
           Add a Card
         </GenericButton>
-        <GenericButton style={{color: red}} onPress={() => navigation.navigate(
+        <GenericButton onPress={() => navigation.navigate(
           'Quiz',
           { title: 'Quiz on ' + title }
         )}>
@@ -40,6 +40,7 @@ class Deck extends Component {
 
 const styles = StyleSheet.create({
   deck: {
+    flex: 1,
     backgroundColor: white,
     padding: 12
   }

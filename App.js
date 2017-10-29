@@ -1,12 +1,13 @@
 import React from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import reducer from './reducers';
 import FlashStatusBar from './components/FlashStatusBar';
 import { purple, red, white, green, black } from './utils/colors';
 import { setLocalNotification } from './utils/notificationSetup';
 import { MainNavigator } from './utils/navigation';
+import reduxThunk from 'redux-thunk';
 
 export default class App extends React.Component {
   componentDidMount() {
@@ -16,8 +17,10 @@ export default class App extends React.Component {
   render() {
     const store = createStore(
       reducer,
-      window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+      {},
+      applyMiddleware(reduxThunk)
     );
+    
     return (
       <Provider store={store}>
         <View style={{flex: 1}}>
