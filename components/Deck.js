@@ -22,7 +22,7 @@ class Deck extends Component {
         <Text>{title}</Text>
         <Text>{questions.length}</Text>
         <GenericButton onPress={() => navigation.navigate(
-          'AddQuestion',
+          'AddCard',
           { title: 'Add a card to ' + title }
         )}>
           Add a Card

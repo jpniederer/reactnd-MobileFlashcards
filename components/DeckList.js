@@ -18,8 +18,6 @@ class DeckList extends Component {
     getDecks()
       .then((decks) => dispatch(receiveDecks(decks)))
       .then(() => this.setState(() => ({ isReady: true })));
-
-    //console.log(this.props.decks);
   }
 
   static navigationOptions = ({ navigation }) => {
@@ -31,7 +29,6 @@ class DeckList extends Component {
   render() {
     const { decks, navigation } = this.props;
     const { isReady } = this.state;
-    console.log(this.props);
 
     if (!isReady) {
       return <AppLoading />
@@ -75,7 +72,6 @@ function mapStateToProps(decks) {
 }
 
 function mapDispatchToProps(dispatch) {
-  console.log(dispatch);
   return {
     getDecks: () => dispatch(getAllDecks())
   }

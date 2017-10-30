@@ -8,7 +8,7 @@ export function getDecks () {
 }
 
 // Should return the deck associated with the provided id.
-export function getDeck ({ id }) {
+export function getDeck (id) {
   return AsyncStorage.getItem(FLASHCARDS_STORAGE_KEY)
     .then(results => {
       const decks = JSON.parse(results);
@@ -17,7 +17,7 @@ export function getDeck ({ id }) {
 }
 
 // Should accept a title and create a new deck for it.
-export function saveDeckTitle ({ title }) {
+export function saveDeckTitle (title) {
   return AsyncStorage.mergeItem(FLASHCARDS_STORAGE_KEY, JSON.stringify({
     [title]: {
       title,
@@ -27,7 +27,7 @@ export function saveDeckTitle ({ title }) {
 }
 
 // Should accept a title and a card (question, answer) and adds it to the list of questions for the deck.
-export function addCardToDeck ({ title, card }) {
+export function addCardToDeck (title, card) {
   let decks = getDecks();
   const { question, answer } = card;
   const updatedQuestions = decks[title].concat({

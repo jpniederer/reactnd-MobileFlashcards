@@ -2,7 +2,7 @@ import React from 'react';
 import { Platform } from 'react-native';
 import { TabNavigator, StackNavigator } from 'react-navigation';
 import AddDeck from '../components/AddDeck';
-import AddQuestion from '../components/AddQuestion';
+import AddCard from '../components/AddCard';
 import Deck from '../components/Deck';
 import DeckList from '../components/DeckList';
 import DeckSummary from '../components/DeckSummary';
@@ -58,8 +58,8 @@ export const MainNavigator = StackNavigator({
       }
     }
   },
-  AddQuestion: {
-    screen: AddQuestion,
+  AddCard: {
+    screen: AddCard,
     navigationOptions: {
       headerTintColor: white,
       headerStyle: {

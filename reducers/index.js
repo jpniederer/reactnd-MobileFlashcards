@@ -1,15 +1,14 @@
 import * as actions from '../actions';
 
-function decks (state = {}, action) {
+function decks(state = {}, action) {
   switch (action.type) {
     case actions.RECEIVE_DECKS:
-      console.log(action.decks);
       return {
         ...state,
         ...action.decks
       }
     case actions.ADD_DECK:
-      const { title } = action.payload;
+      const { title } = action;
       return {
         ...state,
         [title]: {
