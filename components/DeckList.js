@@ -25,7 +25,7 @@ class DeckList extends Component {
       title: 'Home'
     }
   }
-  // Will Map over the decks and create a List of DeckSummary components.
+  
   render() {
     const { decks, navigation } = this.props;
     const { isReady } = this.state;
@@ -35,8 +35,6 @@ class DeckList extends Component {
     }
 
     return (
-      // Need to build a list of the DeckSummary components.
-
       <View style={styles.deck}>
         <FlatList
           style=''
@@ -64,9 +62,6 @@ function mapStateToProps(decks) {
   });
 
   return {
-    // decks: Object.keys(decks).reduce((decks, title) => {
-    //   return decks.concat(decks[title]);
-    // }, [])
     decks: n  
   }
 }

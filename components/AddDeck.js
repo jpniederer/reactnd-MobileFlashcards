@@ -33,7 +33,6 @@ class AddDeck extends Component {
       isTitleValid: false
     });
     navigation.navigate('DeckList');
-
   }
 
   render() {

@@ -3,6 +3,7 @@ import { View, StyleSheet, Text } from 'react-native';
 import GenericButton from './GenericButton';
 import { connect } from 'react-redux';
 import { green, red, white } from '../utils/colors';
+import { getDeck } from '../utils/api';
 
 class Deck extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -11,6 +12,17 @@ class Deck extends Component {
     return {
       title
     }
+  }
+
+  state = {
+    isReady: false,
+  }
+
+  componentDidMount() {
+    const { dispatch, title } = this.props;
+
+    getDeck(title)
+      .then(() => this.setState(() => ({ isReady: true})));
   }
 
   render() {
@@ -23,13 +35,13 @@ class Deck extends Component {
         <Text>{questions.length}</Text>
         <GenericButton onPress={() => navigation.navigate(
           'AddCard',
-          { title: 'Add a card to ' + title }
+          { title: 'Add a card to ' + title, deckTitle: title }
         )}>
           Add a Card
         </GenericButton>
         <GenericButton onPress={() => navigation.navigate(
           'Quiz',
-          { title: 'Quiz on ' + title }
+          { title: 'Quiz on ' + title, deckTitle: title }
         )}>
           Start Quiz
         </GenericButton>

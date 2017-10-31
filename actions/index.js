@@ -44,9 +44,15 @@ export function getDeckByTitle(title) {
   }
 }
 
-export function addQuestionToDeck(deck, question) {
-  return {
-    type: ADD_QUESTION_TO_DECK,
-    payload: addCardToDeck(deck, question)
+export const addQuestionToDeck = (title, card) => {
+  return (dispatch) => {
+    addCardToDeck(title, card)
+      .then(() => {
+        dispatch({
+          type: ADD_QUESTION_TO_DECK,
+          title,
+          card
+        })
+      })
   }
 }

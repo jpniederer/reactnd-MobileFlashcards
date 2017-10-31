@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, StyleSheet, Text, Keyboard, KeyboardAvoidingView } from 'react-native';
 import { FormLabel, FormInput, Button } from 'react-native-elements';
 import { connect } from 'react-redux';
+import { addQuestionToDeck } from '../actions';
 
 class AddCard extends Component {
   state = {
@@ -10,13 +11,7 @@ class AddCard extends Component {
     isCardValid: false
   }
 
-  static navigationOptions = ({ navigation }) => {
-    const { title } = navigation.state.params;
-
-    return {
-      title
-    }
-  }
+  
 
   onQuestionChange(question) {
     const isQuestionEmpty = !question;
@@ -40,7 +35,16 @@ class AddCard extends Component {
 
   addCard() {
     const { navigation } = this.props;
+    const { question, answer } = this.state;
+    const title = this.props.deck.title;
     Keyboard.dismiss();
+
+    this.props.addQuestionToDeck(title, {question, answer});
+    this.setState({
+      question: '',
+      answer: '',
+      isCardValid: false
+    });
 
     navigation.goBack();
   }
@@ -79,23 +83,15 @@ const styles = StyleSheet.create({
 })
 
 function mapStateToProps(state, { navigation }) {
-  const { title } = navigation.state.params;
+  const { deckTitle } = navigation.state.params;
 
   return {
-    title,
-    deck: state[title],
-  }
-}
-
-function mapDispatchToProps(dispatch, { navigation }) {
-  const { title } = navigation.state.params;
-
-  return {
-    goBack: () => navigation.goBack(),
+    title: deckTitle,
+    deck: state[deckTitle],
   }
 }
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  { addQuestionToDeck }
 )(AddCard);

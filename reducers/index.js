@@ -17,14 +17,10 @@ function decks(state = {}, action) {
         }
       };
     case actions.ADD_QUESTION_TO_DECK:
-      const card = action.payload;
-      return {
-        ...state,
-        [card.title]: {
-          title: card.title,
-          questions: card.questions
-        }
-      };
+      console.log(action);
+      const newState = {...state};
+      newState[action.title].questions.push(action.card);
+      return newState;
     case actions.GET_DECK:
       return action.decks;
     case actions.GET_DECKS:

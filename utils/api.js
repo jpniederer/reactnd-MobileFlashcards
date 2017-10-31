@@ -7,12 +7,12 @@ export function getDecks () {
     .then(setupInitialResults);
 }
 
-// Should return the deck associated with the provided id.
-export function getDeck (id) {
+// Should return the deck associated with the provided id/title.
+export function getDeck (title) {
   return AsyncStorage.getItem(FLASHCARDS_STORAGE_KEY)
     .then(results => {
       const decks = JSON.parse(results);
-      return decks[id];
+      return decks[title];
     });
 }
 
@@ -27,18 +27,26 @@ export function saveDeckTitle (title) {
 }
 
 // Should accept a title and a card (question, answer) and adds it to the list of questions for the deck.
-export function addCardToDeck (title, card) {
-  let decks = getDecks();
-  const { question, answer } = card;
-  const updatedQuestions = decks[title].concat({
-    question,
-    answer,
-  });
+export function addCardToDeck (title, card) {  
+  return getDeck(title)
+    .then(result => {
+      return result;
+    })
+    .then(deck => {
+      const { question, answer } = card;
+      const updatedQuestions = deck.questions.concat({
+        question,
+        answer,
+      });
 
-  return AsyncStorage.mergeItem(FLASHCARDS_STORAGE_KEY, JSON.stringify({
-    [title]: {
-      title,
-      updatedQuestions
-    }
-  }));
+      AsyncStorage.mergeItem(FLASHCARDS_STORAGE_KEY, JSON.stringify({
+        [title]: {
+          title,
+          questions: updatedQuestions
+        }
+      }));
+    })
+    .catch(() => {
+      console.log('Error adding card.');
+    });
 }
