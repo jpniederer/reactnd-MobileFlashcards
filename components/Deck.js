@@ -14,19 +14,9 @@ class Deck extends Component {
     }
   }
 
-  state = {
-    isReady: false,
-  }
-
-  componentDidMount() {
-    const { dispatch, title } = this.props;
-
-    getDeck(title)
-      .then(() => this.setState(() => ({ isReady: true})));
-  }
-
   render() {
-    const { title, questions } = this.props.deck;
+    const { title } = this.props;
+    const { questions } = this.props.decks[title];
     const { navigation } = this.props;
 
     return (
@@ -60,9 +50,11 @@ const styles = StyleSheet.create({
 
 function mapStateToProps(state, { navigation }) {
   const { title } = navigation.state.params;
+  console.log(state);
 
   return {
     title,
+    decks: state,
     deck: state[title],
   }
 }
