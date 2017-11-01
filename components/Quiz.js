@@ -4,7 +4,7 @@ import { Button, Text } from 'react-native-elements';
 import { green, red, white, purple, orange } from '../utils/colors';
 import GenericButton from './GenericButton';
 import { connect } from 'react-redux';
-import { clearLocalNotification } from '../utils/notificationSetup';
+import { clearLocalNotification, setLocalNotification } from '../utils/notificationSetup';
 
 class Quiz extends Component {
   state = {
@@ -14,7 +14,7 @@ class Quiz extends Component {
   }
 
   onComponentDidMount() {
-    clearLocalNotification();
+    clearLocalNotification().then(setLocalNotification);
   }
 
   static navigationOptions = ({ navigation }) => {

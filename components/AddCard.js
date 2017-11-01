@@ -12,6 +12,14 @@ class AddCard extends Component {
     isCardValid: false
   }
 
+  static navigationOptions = ({ navigation }) => {
+    const { title } = navigation.state.params;
+
+    return {
+      title
+    }
+  }
+
   onQuestionChange(question) {
     const isQuestionEmpty = !question;
     const isAnswerNotValid = !this.state.answer;
