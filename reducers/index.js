@@ -17,12 +17,10 @@ function decks(state = {}, action) {
         }
       };
     case actions.ADD_QUESTION_TO_DECK:
-      console.log(action);
       const newState = {...state};
       newState[action.title].questions.push(action.card);
       return newState;
     case actions.GET_DECK:
-      return action.decks;
     case actions.GET_DECKS:
       return action.decks;
     default:

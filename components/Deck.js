@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
-import GenericButton from './GenericButton';
+import { View, StyleSheet } from 'react-native';
+import { Button, Text } from 'react-native-elements';
 import { connect } from 'react-redux';
-import { green, red, white } from '../utils/colors';
-import { getDeck } from '../utils/api';
+import { green, red, white, purple } from '../utils/colors';
 
 class Deck extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -21,20 +20,34 @@ class Deck extends Component {
 
     return (
       <View style={styles.deck}>
-        <Text>{title}</Text>
-        <Text>{questions.length}</Text>
-        <GenericButton onPress={() => navigation.navigate(
-          'AddCard',
-          { title: 'Add a card to ' + title, deckTitle: title }
-        )}>
-          Add a Card
-        </GenericButton>
-        <GenericButton onPress={() => navigation.navigate(
-          'Quiz',
-          { title: 'Quiz on ' + title, deckTitle: title }
-        )}>
-          Start Quiz
-        </GenericButton>
+        <Text h2 style={styles.header}>{title}</Text>
+        <Text h4>{questions.length} card(s) in deck</Text>
+        <View>
+          {
+            questions.length > 0
+              ? <Text>Start a quiz by clicking the Start Quiz button!</Text>
+              : <Text>Add More cards to this deck to take a quiz.</Text>
+          }
+        </View>
+        <Button
+          title='Add a Card'
+          backgroundColor={green}
+          style={styles.button}
+          onPress={() => navigation.navigate(
+            'AddCard',
+            { title: 'Add a card to ' + title, deckTitle: title }
+          )}
+        />
+        <Button
+          title='Start Quiz'
+          backgroundColor={purple}
+          style={styles.button}
+          disabled={questions.length === 0}
+          onPress={() => navigation.navigate(
+            'Quiz',
+            { title: 'Quiz on ' + title, deckTitle: title }
+          )}
+        />
       </View>
     )
   }
@@ -44,13 +57,19 @@ const styles = StyleSheet.create({
   deck: {
     flex: 1,
     backgroundColor: white,
+    alignItems: 'center',
     padding: 12
+  },
+  button: {
+    padding: 12,
+  },
+  header: {
+    paddingRight: 5
   }
 })
 
 function mapStateToProps(state, { navigation }) {
   const { title } = navigation.state.params;
-  console.log(state);
 
   return {
     title,

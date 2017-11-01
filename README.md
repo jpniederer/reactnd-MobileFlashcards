@@ -1,5 +1,5 @@
 # reactnd-MobileFlashcards
-Project #3 from Udacity's [React Nanodegree][rnd] program. reactnd-MobileFlashcards covers [React Native][native]. The application allows users to create decks with cards that consist questions and answers. Users can quiz themselves over the material from the cards. The app runs on both Android and iOS devices.
+Project #3 from Udacity's [React Nanodegree][rnd] program. reactnd-MobileFlashcards covers [React Native][native]. The application allows users to create decks with cards that consist questions and answers. Users can quiz themselves over the material from the cards. The app runs on both Android and iOS devices. The majority of testing was performed on an iOS emulator.
 
 ## Installation Instructions
 The commands below can be used to install and run the application.
@@ -46,7 +46,6 @@ reactnd-MobileFlashcards/
     _cards.js
     api.js
     colors.js
-    helpers.js
     navigation.js
     notificationSetup.js
   App.js

@@ -18,17 +18,13 @@ export function receiveDecks(decks) {
   }
 }
 
-export const addNewDeck = (title) => {
-  return (dispatch) => {
-    saveDeckTitle(title)
-      .then(() => {
-        dispatch({
-          type: ADD_DECK,
-          title
-        });
-      });
-  };
-};
+export const addNewDeck = (title) => dispatch => (
+  saveDeckTitle(title)
+    .then(() => dispatch({
+      type: ADD_DECK,
+      title
+    }))
+);
 
 export function getAllDecks() {
   return {

@@ -66,13 +66,6 @@ function mapStateToProps(decks) {
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    getDecks: () => dispatch(getAllDecks())
-  }
-}
-
 export default connect(
   mapStateToProps,
-  //mapDispatchToProps
 )(DeckList);

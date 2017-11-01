@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, StyleSheet, Text, Keyboard, KeyboardAvoidingView } from 'react-native';
 import { FormLabel, FormInput, Button } from 'react-native-elements';
 import GenericButton from './GenericButton';
-import { white } from '../utils/colors';
+import { white, blue } from '../utils/colors';
 import { connect } from 'react-redux';
 import { addNewDeck } from '../actions';
 
@@ -26,13 +26,18 @@ class AddDeck extends Component {
     const { navigation } = this.props;
     const title = this.state.deckTitle;
     Keyboard.dismiss();
-
-    this.props.addNewDeck(title);
     this.setState({
       deckTitle: '',
       isTitleValid: false
     });
-    navigation.navigate('DeckList');
+
+    this.props.addNewDeck(title)
+      .then(() => {
+        navigation.navigate(
+          'Deck',
+          { title }
+        );
+      });
   }
 
   render() {
@@ -45,7 +50,9 @@ class AddDeck extends Component {
           value={this.state.deckTitle}
         />
         <Button
-          title='Add Deck'
+          title='Create Deck'
+          backgroundColor={blue}
+          style={styles.button}
           disabled={!this.state.isTitleValid}
           onPress={this.addDeck.bind(this)}
         />
@@ -60,7 +67,10 @@ const styles = StyleSheet.create({
     backgroundColor: white,
     padding: 15,
     alignItems: 'center'
-  }
+  },
+  button: {
+    padding: 12,
+  },
 })
 
 function mapStateToProps(data) {

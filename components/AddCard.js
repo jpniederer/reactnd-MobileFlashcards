@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, StyleSheet, Text, Keyboard, KeyboardAvoidingView } from 'react-native';
 import { FormLabel, FormInput, Button } from 'react-native-elements';
 import { connect } from 'react-redux';
+import { blue } from '../utils/colors';
 import { addQuestionToDeck } from '../actions';
 
 class AddCard extends Component {
@@ -10,8 +11,6 @@ class AddCard extends Component {
     answer: '',
     isCardValid: false
   }
-
-  
 
   onQuestionChange(question) {
     const isQuestionEmpty = !question;
@@ -66,6 +65,8 @@ class AddCard extends Component {
         />
         <Button
           title='Add Card'
+          backgroundColor={blue}
+          style={styles.button}
           disabled={!this.state.isCardValid}
           onPress={this.addCard.bind(this)}
         />
@@ -79,7 +80,10 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     marginTop: 12
-  }
+  },
+  button: {
+    padding: 12,
+  },
 })
 
 function mapStateToProps(state, { navigation }) {
