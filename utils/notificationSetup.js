@@ -13,10 +13,10 @@ function createNotification () {
     title: 'Quiz Time!',
     body: 'Remember to take a quiz today. Also, have a great day.',
     ios: {
-      sound: true,
+      sound: true
     },
     android: {
-      sound: true,
+      sound: true
     }
   }
 }
@@ -40,7 +40,7 @@ export function setLocalNotification () {
                 createNotification(),
                 {
                   time: tomorrow,
-                  repeat: 'day',
+                  repeat: 'day'
                 }
               );
 

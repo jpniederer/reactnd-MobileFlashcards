@@ -6,18 +6,18 @@ import { blue } from '../utils/colors';
 import { addQuestionToDeck } from '../actions';
 
 class AddCard extends Component {
-  state = {
-    question: '',
-    answer: '',
-    isCardValid: false
-  }
-
   static navigationOptions = ({ navigation }) => {
     const { title } = navigation.state.params;
 
     return {
       title
     }
+  }
+  
+  state = {
+    question: '',
+    answer: '',
+    isCardValid: false
   }
 
   onQuestionChange(question) {

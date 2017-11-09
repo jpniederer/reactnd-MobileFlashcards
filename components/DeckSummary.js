@@ -1,9 +1,11 @@
 import React from 'react';
-import { View,
+import { 
+  View,
   Platform,
   StyleSheet, 
   Text, 
-  TouchableOpacity } from 'react-native';
+  TouchableOpacity 
+} from 'react-native';
 import { white } from '../utils/colors';
 
 export default function DeckSummary ({ deck, navigation }) {
@@ -14,9 +16,9 @@ export default function DeckSummary ({ deck, navigation }) {
           'Deck',
           { title: deck.title }
         )}
-        >
-          <Text style={styles.text}>{deck.title}</Text>
-          <Text style={styles.text}>Card Count: {deck.questions.length}</Text>
+      >
+        <Text style={styles.text}>{deck.title}</Text>
+        <Text style={styles.text}>Card Count: {deck.questions.length}</Text>
       </TouchableOpacity>
     </View>
   )
@@ -37,7 +39,7 @@ const styles = StyleSheet.create({
     shadowOffset: {
       width: 0,
       height: 3
-    },
+    }
   },
   text: {
     flexDirection: 'row',
@@ -45,6 +47,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     textAlign: 'center',
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: 'bold'
   }
 })

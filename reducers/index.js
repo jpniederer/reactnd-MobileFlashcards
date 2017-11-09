@@ -1,6 +1,6 @@
 import * as actions from '../actions';
 
-function decks(state = {}, action) {
+function decks (state = {}, action) {
   switch (action.type) {
     case actions.RECEIVE_DECKS:
       return {

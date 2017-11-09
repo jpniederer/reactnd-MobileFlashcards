@@ -8,6 +8,12 @@ import { getDecks } from '../utils/api';
 import _ from 'lodash';
 
 class DeckList extends Component {
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: 'Home'
+    }
+  }
+  
   state = {
     isReady: false,
   }
@@ -20,12 +26,6 @@ class DeckList extends Component {
       .then(() => this.setState(() => ({ isReady: true })));
   }
 
-  static navigationOptions = ({ navigation }) => {
-    return {
-      title: 'Home'
-    }
-  }
-  
   render() {
     const { decks, navigation } = this.props;
     const { isReady } = this.state;

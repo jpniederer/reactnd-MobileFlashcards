@@ -7,22 +7,22 @@ import { connect } from 'react-redux';
 import { clearLocalNotification, setLocalNotification } from '../utils/notificationSetup';
 
 class Quiz extends Component {
-  state = {
-    currentIndex: 0,
-    correctCount: 0,
-    showAnswer: false
-  }
-
-  onComponentDidMount() {
-    clearLocalNotification().then(setLocalNotification);
-  }
-
   static navigationOptions = ({ navigation }) => {
     const { title } = navigation.state.params;
 
     return {
       title
     }
+  }
+
+  state = {
+    currentIndex: 0,
+    correctCount: 0,
+    showAnswer: false
+  }
+
+  componentDidMount() {
+    clearLocalNotification().then(setLocalNotification);
   }
 
   answerCorrectly() {

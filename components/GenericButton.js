@@ -1,5 +1,4 @@
-import React from 'react';
-import { Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 export default function GenericButton ({ children, onPress, style = {} }) {
   return (
@@ -15,7 +14,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '500',
     paddingTop: 8,
-    paddingBottom: 8,
+    paddingBottom: 8
   },
   baseBottom: {
     flex: 1,
@@ -24,10 +23,10 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#000',
     marginLeft: 5,
-    marginRight: 5,
+    marginRight: 5
   },
   reset: {
     textAlign: 'center',
-    margin: 20,
+    margin: 20
   }
 })

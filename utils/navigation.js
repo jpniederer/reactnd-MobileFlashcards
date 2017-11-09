@@ -5,10 +5,9 @@ import AddDeck from '../components/AddDeck';
 import AddCard from '../components/AddCard';
 import Deck from '../components/Deck';
 import DeckList from '../components/DeckList';
-import DeckSummary from '../components/DeckSummary';
-import Quiz from '../components/Quiz';
-import { purple, red, white, green, black } from './colors';
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
+import Quiz from '../components/Quiz';
+import { red, white, green } from './colors';
 
 export const Tabs = TabNavigator({
   DeckList: {
@@ -16,7 +15,7 @@ export const Tabs = TabNavigator({
     navigationOptions: {
       tabBarLabel: 'All Decks',
       tabBarIcon: ({ tintColor }) => <Ionicons name='ios-bookmarks' size={30} color={tintColor} />
-    },
+    }
   },
   AddDeck: {
     screen: AddDeck,
@@ -47,14 +46,14 @@ export const Tabs = TabNavigator({
 
 export const MainNavigator = StackNavigator({
   Home: {
-    screen: Tabs,
+    screen: Tabs
   },
   Deck: {
     screen: Deck,
     navigationOptions: {
       headerTintColor: white,
       headerStyle: {
-        backgroundColor: Platform.OS === 'ios' ? red : green,
+        backgroundColor: Platform.OS === 'ios' ? red : green
       }
     }
   },
@@ -63,7 +62,7 @@ export const MainNavigator = StackNavigator({
     navigationOptions: {
       headerTintColor: white,
       headerStyle: {
-        backgroundColor: Platform.OS === 'ios' ? red : green,
+        backgroundColor: Platform.OS === 'ios' ? red : green
       }
     }
   },
@@ -72,8 +71,8 @@ export const MainNavigator = StackNavigator({
     navigationOptions: {
       headerTintColor: white,
       headerStyle: {
-        backgroundColor: Platform.OS === 'ios' ? red : green,
+        backgroundColor: Platform.OS === 'ios' ? red : green
       }
     }
-  },
+  }
 });

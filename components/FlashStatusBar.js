@@ -5,7 +5,7 @@ import { StatusBar } from 'react-native';
 
 export default function FlashStatusBar ({backgroundColor, ...props}) {
   return (
-    <View style={{ backgroundColor, height: Constants.statusBarHeight}}>
+    <View style={{ backgroundColor, height: Constants.statusBarHeight }}>
       <StatusBar translucent backgroundColor={backgroundColor} { ...props} />
     </View>
   )
